@@ -1,20 +1,28 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TextInput, View , Button, Image, Linking, SafeAreaView, ScrollView} from 'react-native';
+import Header from './pages/header';
+import Section1 from './pages/section1';
+
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+        <SafeAreaView>
+        <Header/>
+        </SafeAreaView>
+        <ScrollView>
+          <Section1/>
+          <StatusBar style='inverted' />
+        </ScrollView>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+    flex:1,
+    backgroundColor: '#121212',
+    paddingVertical:30,
+    height:'auto'
+  }
 });
