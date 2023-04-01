@@ -14,7 +14,7 @@ export default function App() {
         <Header/>
         </SafeAreaView>
         <Section1/>
-        {/* <StatusBar style='inverted' /> */}
+        <StatusBar style='inverted' />
     </View>
   );
 }

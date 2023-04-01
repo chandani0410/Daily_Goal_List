@@ -45,14 +45,16 @@ const Section1 =()=>{
     }
 //========== Return 
     return(
-        <View >
+        <View style={{flex:1}}>
             <View>
                 <Text style={styles.input_tagline}>Click below to add your GOALS LIST!!!</Text>
             </View>
+            <View style={{width:'100%',alignItems:'center'}}>
             <Button 
             title='Add New Goal' 
             onPress={modalVisibleOn}
             />
+            </View>
            {
            modalVisibility && <GoalsInput 
            onSubmit={handleSubmit} 
@@ -62,6 +64,7 @@ const Section1 =()=>{
            <FlatList 
                 style={styles.display_list_section}
                 data={goalsList}
+                // style={{flex: 1}}
                 renderItem={(ItemData) =>{
                     return(
                         <GoalsList 

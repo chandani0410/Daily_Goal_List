@@ -1,5 +1,5 @@
 import React from "react";
-import { View,Text,StyleSheet, Pressable } from "react-native";
+import { View,Text,StyleSheet, Pressable, ScrollView } from "react-native";
 
 function GoalsList(props){
 
@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
         borderColor:'white'
     },
     display_list_text:{
+        flex:1,
         color:'white',
         fontSize:20,
         padding:15,

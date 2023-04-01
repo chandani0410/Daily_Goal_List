@@ -22,7 +22,8 @@ function GoalsInput(props){
         }
     }
     
-    return( 
+    return(
+        <View style={{flex:1}}>
         <Modal visible={props.visible} animationType="slide">
            <View style={styles.trial}>
                 <SafeAreaView>
@@ -49,6 +50,7 @@ function GoalsInput(props){
             
         </View>
         </Modal>
+        </View>
     );
 }
 
@@ -81,10 +83,11 @@ const styles = StyleSheet.create({
     add_goal_button:{
         alignItems:'center',
         marginHorizontal:8,
-        width:'40%'
+        width:'50%'
     },
     trial:{
-        backgroundColor:'#121212'
+        backgroundColor:'#121212',
+        
     },
     image:{
         height:100,
