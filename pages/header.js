@@ -1,13 +1,15 @@
 import React from "react";
 import { StyleSheet, Text, TextInput, View , Button, ScrollView, SafeAreaView,Image} from 'react-native';
-import appLogo from 'C:\Users\chand\Desktop\training\Practice\RNcourse\assets\appLogo.png'
-
+// https://github.com/chandani0410/Daily_Goal_List
 const Header=()=>{
     return (
+        
     <View style={styles.header}>
+        
         <View style={styles.header_section}>
+      
+            <Image source={require('../assets/Buddy.png')} style={styles.image}></Image>
             <Text style={styles.header_items}> Buddy APP!!!</Text>
-            {/* <Image source={appLogo}/> */}
         </View>
     </View>
     );
@@ -15,22 +17,26 @@ const Header=()=>{
 
 const styles = StyleSheet.create({
     header:{
-        width:'100%',
-        backgroundColor:'white',
-        alignItems:'center',
-        justifyContent:'center'
+        backgroundColor:'#80D5C8',
     },
     header_section:{
-        alignSelf:'center',
+        flexDirection:'row',
+        alignItems:'center',
+        justifyContent:'space-between'
     },
     header_items :{
-        fontSize:35,
+        fontSize:20,
         fontWeight:'bold',
-        color:'#80D5C8',
-        padding:10,
-        height:60,
+        color:'black',
+        justifyContent:'space-between',
         fontFamily:'Times New Roman',
-        // backgroundColor:'#121212'
+        marginHorizontal:10,
+
+    },
+    image:{
+        height:80,
+        width:80,
+        marginHorizontal:10,
     }
 })
 

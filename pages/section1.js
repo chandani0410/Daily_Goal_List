@@ -1,48 +1,89 @@
 import React from "react";
-import { StyleSheet, Text, TextInput, View , Button, ScrollView, SafeAreaView} from 'react-native';
+import { 
+    StyleSheet, 
+    Text, 
+    View, 
+    Button, 
+    FlatList
+} from 'react-native';
+import GoalsList from "./goalsList";
+import GoalsInput from "./goaslInput";
 
 const Section1 =()=>{
+
+//==========    GOALLIST STATE AND FUNCTION
+    const[goalsList,setGoalsList] = React.useState([]);
+
+
+    function handleSubmit(goal){
+        setGoalsList(prevGoalsList=>[
+            ...prevGoalsList,{
+            text:goal,
+            key:Math.random()
+        }
+        ]);
+        modalVisibleOff();
+    }
+
+//==========    DELETE GOAL FUNCTION
+    function deleteGoal(key){
+        // console.log("Deleted");
+        setGoalsList(prevGoalsList=>{
+            return goalsList.filter((goals)=>goals.key !==key)
+        });
+    }
+
+//==========    MODAL STATE AND FUNCTION
+    const [modalVisibility,setModalVisibility] = React.useState(false);
+
+    function modalVisibleOn(){
+        setModalVisibility(true);
+    }
+
+    function modalVisibleOff(){
+        setModalVisibility(false);
+    }
+//========== Return 
     return(
-        <View>
+        <View >
             <View>
-                <Text style={styles.input_tagline}>What are you goals for Today ?</Text>
+                <Text style={styles.input_tagline}>Click below to add your GOALS LIST!!!</Text>
             </View>
-            <View>
-                <View style={styles.input_container}>
-                <TextInput placeholder="Add a Goal..!!!" style={styles.input_input}></TextInput>
-                <Button title="Add Goal" onPress={()=> console.log('button clicked')}></Button>
-                </View>
-            </View>
+            <Button 
+            title='Add New Goal' 
+            onPress={modalVisibleOn}
+            />
+           {
+           modalVisibility && <GoalsInput 
+           onSubmit={handleSubmit} 
+           visible={modalVisibility}
+           turnOffModal={modalVisibleOff}/>
+           }
+           <FlatList 
+                style={styles.display_list_section}
+                data={goalsList}
+                renderItem={(ItemData) =>{
+                    return(
+                        <GoalsList 
+                        text={ItemData.item.text} 
+                        id={ItemData.item.key}
+                        onDelete={deleteGoal}/>
+                    );
+                }}
+            />
         </View>
     );
 }
-
 const styles=StyleSheet.create({
     input_tagline:{
         color:"#80D5C8",
-        fontSize:40,
-        padding:10,
-        fontFamily:'Times New Roman',
-    },
-    input_container :{
-        marginTop:10,
-        flexDirection : "row",
-        justifyContent:"space-between",
-        alignItems:"center",
-        borderBottomWidth:2,
-        borderBottomColor:'white',
+        fontSize:30,
         padding:15,
-        margin:15
+        fontFamily:'Times New Roman',
+        width:'100%'
     },
-    input_input :{
-        borderWidth : 2,
-        borderColor:'#80D5C8',
-        width:'80%',
-        height:60,
-        fontSize:20,
-        padding:10,
-        backgroundColor:'#FFFFFF',
-        borderRadius:10,
+    display_list_section:{
+        margin:10
     }
 })
 
